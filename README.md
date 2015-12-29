@@ -21,6 +21,17 @@ or
 
 #### Usage
 
+Add the script dependency
+```html
+<script src="path/to/payment-components.js"></script>
+```
+
+Inject the module into the required module
+```js
+angular.module('myApp',['tw.paymentComponents']);
+```
+
+Add the directive code to HTML
 ```html
 <tw-saved-cards
   cards="vm.cards"

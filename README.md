@@ -21,14 +21,16 @@ or
 
 #### Usage
 
-    <tw-saved-cards
-      cards="vm.cards"
-      selected="vm.selected"
-      currency-symbol="vm.currencySymbol"
-      amount="vm.amount"
-      on-submit="vm.onSubmit()"
-      is-processing="vm.isProcessing">
-    </tw-saved-cards>
+```html
+<tw-saved-cards
+  cards="vm.cards"
+  selected="vm.selected"
+  currency-symbol="vm.currencySymbol"
+  amount="vm.amount"
+  on-submit="vm.onSubmit()"
+  is-processing="vm.isProcessing">
+</tw-saved-cards>
+```
 where  
 `vm.cards` – array of cards specific to the TransferWise API  
 `vm.selected` – two-way-bound object with `reference` and `securityCode`  

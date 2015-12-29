@@ -1,0 +1,12 @@
+<tw-saved-card
+  ng-repeat="card in vm.cards track by card.adyenRecurringDetailReference"
+  brand="vm.getBrandFromVariant(card.adyenVariant)"
+  type="card.cardType"
+  number="card.cardNumber"
+  reference="card.adyenRecurringDetailReference"
+  selected="vm.selected"
+  currency-symbol="vm.currencySymbol"
+  amount="vm.amount"
+  on-submit="vm.onSubmit()"
+  is-processing="vm.isProcessing">
+</tw-saved-card>

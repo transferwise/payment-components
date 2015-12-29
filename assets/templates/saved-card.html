@@ -1,0 +1,67 @@
+<div class="tw-saved-card"
+  ng-class="{ 'is-selected' : vm.isSelected() }"
+  ng-click="vm.selectCard()">
+
+  <small>
+    <a href="" class="animate-opacity pull-right m-t"
+      ng-if="!vm.isSelected()">
+      Select card
+    </a>
+  </small>
+
+  <div class="tw-saved-card__card-flip-container"
+    ng-class="{'show-back' : vm.isSecurityCodeFocused}">
+    <div class="tw-saved-card__card-flipper">
+      <div class="tw-saved-card__card-front payment-card-icon"
+        ng-class="'payment-card-icon-' + vm.brand"></div>
+      <div class="tw-saved-card__card-back"></div>
+    </div>
+    <div class="tw-saved-card__card-cvc-line"></div>
+  </div>
+
+  <span class="text-capitalize tw-saved-card__brand-type">
+    {{ ::vm.brand }} {{ ::vm.type | lowercase }}
+  </span>
+  <small class="tw-saved-card__number">Ending in {{ ::vm.number }}</small>
+
+  <form name="savedCardPaymentForm" novalidate
+    class="animate-opacity"
+    ng-if="vm.isSelected()"
+    ng-submit="savedCardPaymentForm.$valid && vm.onSubmit()">
+
+    <div class="row">
+      <div class="col-sm-8 col-md-6">
+        <div class="form-group m-b m-t-md">
+          <label class="tw-saved-card__security-code-label
+            control-label">
+            Please re-enter your
+            <span ng-if="vm.brand">
+              {{ vm.brand === 'visa' ? 'CVV' : 'CVC' }}
+            </span>
+          </label>
+          <input type="text" name="savedCardSecurityCode" required
+            class="form-control" autocomplete="off"
+            placeholder="3 digits on the back"
+            maxlength="3" ng-maxlength="3" 
+            ng-model="vm.selected.securityCode"
+            ng-focus="vm.isSecurityCodeFocused = true"
+            ng-blur="vm.isSecurityCodeFocused = false"
+            payments-validate="cvc"
+            payments-type-model="vm.brand"
+            payments-format="cvc" />
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block m-t-lg m-b"
+      ng-disabled="vm.isProcessing">
+      <span ng-if="!vm.isProcessing">
+        Pay
+        {{ ::vm.currencySymbol }}{{ ::vm.amount | number:2 }}
+      </span>
+      <span ng-if="vm.isProcessing">
+        Processing the payment...
+      </span>
+    </button>
+  </form>
+</div>

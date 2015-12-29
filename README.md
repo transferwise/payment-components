@@ -55,7 +55,7 @@ where
 Everything is done with npm (dev dependencies, frontend dependencies, building):
 
 `npm install` – install necessary dependencies  
-`npm run build` – build styles and scripts to `/dist` 
+`npm run build` – build styles and scripts to `/dist`  
 `npm run watch` – watch browserify tree, tests and styles  
 `npm run demo` – build and run demo page and serve it on `localhost:9090/demo`  
 `npm test` – run tests once

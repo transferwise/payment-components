@@ -1,8 +1,8 @@
 'use strict';
 
-var template = require('../templates/security-code-input.html');
+var template = require('./new-card-form.html');
 
-module.exports = function SecurityCodeInputComponent() {
+module.exports = function NewCardFormComponent() {
   var directive = {
     bindToController: true,
     controller: function() {},
@@ -10,7 +10,11 @@ module.exports = function SecurityCodeInputComponent() {
     replace: true,
     restrict: 'E',
     scope: {
-      focused: '='
+      cardDetails: '=',
+      currencySymbol: '=',
+      amount: '=',
+      onSubmit: '&',
+      isProcessing: '='
     },
     template: template
   };

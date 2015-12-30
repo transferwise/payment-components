@@ -1,8 +1,8 @@
 'use strict';
 
-var template = require('../templates/pay-button.html');
+var template = require('./payment-card-flipper.html');
 
-module.exports = function PayButtonComponent() {
+module.exports = function PaymentCardFlipperComponent() {
   var directive = {
     bindToController: true,
     controller: function() {},
@@ -10,11 +10,11 @@ module.exports = function PayButtonComponent() {
     replace: true,
     restrict: 'E',
     scope: {
-      currencySymbol: '=',
-      amount: '=',
-      isDisabled: '='
+      brand: '=',
+      isFlipped: '='
     },
-    template: template
+    template: template,
+    transclude: true
   };
 
   return directive;

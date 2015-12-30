@@ -1,8 +1,8 @@
 'use strict';
 
-var template = require('../templates/new-card-form.html');
+var template = require('./pay-button.html');
 
-module.exports = function NewCardFormComponent() {
+module.exports = function PayButtonComponent() {
   var directive = {
     bindToController: true,
     controller: function() {},
@@ -10,11 +10,9 @@ module.exports = function NewCardFormComponent() {
     replace: true,
     restrict: 'E',
     scope: {
-      cardDetails: '=',
       currencySymbol: '=',
       amount: '=',
-      onSubmit: '&',
-      isProcessing: '='
+      isDisabled: '='
     },
     template: template
   };

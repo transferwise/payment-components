@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('../templates/saved-card.html');
+var template = require('./saved-card.html');
 
 module.exports = function SavedCardComponent() {
   var directive = {

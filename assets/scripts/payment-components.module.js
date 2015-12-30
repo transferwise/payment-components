@@ -8,12 +8,12 @@ var SecurityCodeInputComponent = require('./security-code-input.component');
 var PaymentCardFlipperComponent = require('./payment-card-flipper.component');
 var PayButtonComponent = require('./pay-button.component');
 
-var module = angular.module('tw.paymentComponents', [
+var paymentComponents = angular.module('tw.paymentComponents', [
   'ngAnimate', 'angularPayments', 'tw.styleguide-components'
 ]);
-module.directive('twNewCardForm', NewCardFormComponent);
-module.directive('twSavedCard', SavedCardComponent);
-module.directive('twSavedCards', SavedCardsComponent);
-module.directive('twSecurityCodeInput', SecurityCodeInputComponent);
-module.directive('twPaymentCardFlipper', PaymentCardFlipperComponent);
-module.directive('twPayButton', PayButtonComponent);
+paymentComponents.directive('twNewCardForm', NewCardFormComponent);
+paymentComponents.directive('twSavedCard', SavedCardComponent);
+paymentComponents.directive('twSavedCards', SavedCardsComponent);
+paymentComponents.directive('twSecurityCodeInput', SecurityCodeInputComponent);
+paymentComponents.directive('twPaymentCardFlipper', PaymentCardFlipperComponent);
+paymentComponents.directive('twPayButton', PayButtonComponent);

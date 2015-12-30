@@ -68,5 +68,8 @@
   "browserify-shim": {
     "angular": "global:angular"
   },
+  "jshintConfig": {
+    "browserify": true
+  },
   "license": "MIT"
 }

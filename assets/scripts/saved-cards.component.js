@@ -20,7 +20,7 @@ module.exports = function SavedCardsComponent() {
   };
 
   return directive;
-}
+};
 
 function SavedCardsController() {
   var vm = this;
@@ -34,8 +34,7 @@ function SavedCardsController() {
       return 'visa';
     } else if (variant.indexOf('mc') > -1) {
       return 'mastercard';
-    } else if (variant.indexOf('bij') > -1
-      || variant.indexOf('maestro') > -1) {
+    } else if (variant.indexOf('bij') > -1 || variant.indexOf('maestro') > -1) {
       return 'maestro';
     } else {
       return variant;

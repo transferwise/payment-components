@@ -44,4 +44,4 @@ function SavedCardController() {
     }
     return vm.selected.reference === vm.reference;
   }
-};
+}

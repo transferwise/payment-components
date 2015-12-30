@@ -1,0 +1,42 @@
+.payment-card-flipper {
+  display: block;
+
+  width: 46px;
+  height: 28px;
+
+  .perspective(1000);
+  .transform-style(preserve-3d);
+  &--flipped {
+    .payment-card-flipper__front {
+      .rotateY(180deg);
+    }
+    .payment-card-flipper__back {
+      .rotateY(0deg);
+    }
+  }
+  &__wrapper {
+    position: relative;
+
+    .transition(all .3s ease-in-out);
+    .transform-style(preserve-3d);
+  }
+  &__front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    .backface-visibility(hidden);
+    .rotateY(0deg);
+    .transition(all .15s ease-in-out);
+  }
+  &__back {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .backface-visibility(hidden);
+    .rotateY(-180deg);
+    .transition(all .15s ease-in-out);
+  }
+}

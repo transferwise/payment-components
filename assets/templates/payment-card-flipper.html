@@ -1,0 +1,9 @@
+<div class="payment-card-flipper"
+  ng-class="{'payment-card-flipper--flipped' : vm.isFlipped}">
+  <div class="payment-card-flipper__wrapper">
+    <div class="payment-card-flipper__front payment-card-icon"
+      ng-class="'payment-card-icon--' + vm.brand"></div>
+    <div class="payment-card-flipper__back payment-card-icon payment-card-icon--back"></div>
+  </div>
+  <ng-transclude></ng-transclude>
+</div>

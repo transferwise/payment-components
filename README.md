@@ -11,9 +11,11 @@ or
 ## Dependencies
 
 1. `angular`
-2. `angular-animate`
+2. `angular-animate` (optional but recommended)
 3. `angular-payments`
 4. `bootstrap`
+5. `jquery`
+6. `styleguide-components`
 
 ## Components
 

@@ -18,7 +18,10 @@ module.exports = function(config) {
     files: [
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
+      'node_modules/angular-animate/angular-animate.js',
       'node_modules/angular-payments/lib/angular-payments.js',
+      'node_modules/jquery/dist/jquery.min.js',
+      'node_modules/tw-styleguide-components/dist/js/styleguide-components.js',
       'test/*.spec.js'
     ],
 

@@ -1,0 +1,25 @@
+.tw-new-card-form {
+  &__payment-card-icon {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+  &__security-code-line {
+    position: absolute;
+    top: 22px;
+    right: 7px;
+
+    width: 2px;
+    height: 0;
+    margin-top: 100px;
+
+    background-color: @brand-light-blue;
+
+    .transition(height .3s ease-in-out, margin-top .3s ease-in-out;);
+    
+    &--visible {
+      height: 88px;
+      margin-top: 0;
+    }
+  }
+}

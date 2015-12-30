@@ -9,15 +9,15 @@
     </a>
   </small>
 
-  <div class="tw-saved-card__card-flip-container"
-    ng-class="{'show-back' : vm.isSecurityCodeFocused}">
-    <div class="tw-saved-card__card-flipper">
-      <div class="tw-saved-card__card-front payment-card-icon"
-        ng-class="'payment-card-icon-' + vm.brand"></div>
-      <div class="tw-saved-card__card-back"></div>
+  <tw-payment-card-flipper
+    class="tw-saved-card__payment-card-icon"
+    brand="vm.brand"
+    is-flipped="vm.isSecurityCodeFocused">
+    <div class="tw-saved-card__security-code-line"
+      ng-class="{ 'tw-saved-card__security-code-line--visible' :
+        vm.isSecurityCodeFocused }">
     </div>
-    <div class="tw-saved-card__card-cvc-line"></div>
-  </div>
+  </tw-payment-card-flipper>
 
   <span class="text-capitalize tw-saved-card__brand-type">
     {{ ::vm.brand }} {{ ::vm.type | lowercase }}
@@ -39,29 +39,18 @@
               {{ vm.brand === 'visa' ? 'CVV' : 'CVC' }}
             </span>
           </label>
-          <input type="text" name="savedCardSecurityCode" required
-            class="form-control" autocomplete="off"
-            placeholder="3 digits on the back"
-            maxlength="3" ng-maxlength="3" 
+          <tw-security-code-input
             ng-model="vm.selected.securityCode"
-            ng-focus="vm.isSecurityCodeFocused = true"
-            ng-blur="vm.isSecurityCodeFocused = false"
-            payments-validate="cvc"
-            payments-type-model="vm.brand"
-            payments-format="cvc" />
+            focused="vm.isSecurityCodeFocused">
+          </tw-security-code-input>
         </div>
       </div>
     </div>
 
-    <button type="submit" class="btn btn-success btn-block m-t-lg m-b"
-      ng-disabled="vm.isProcessing">
-      <span ng-if="!vm.isProcessing">
-        Pay
-        {{ ::vm.currencySymbol }}{{ ::vm.amount | number:2 }}
-      </span>
-      <span ng-if="vm.isProcessing">
-        Processing the payment...
-      </span>
-    </button>
+    <tw-pay-button
+      currency-symbol="vm.currencySymbol"
+      amount="vm.amount"
+      is-disabled="vm.isProcessing">
+    </tw-pay-button>
   </form>
 </div>

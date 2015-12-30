@@ -5,9 +5,12 @@ app.controller('DemoController', DemoController);
 function DemoController($timeout) {
   var vm = this;
 
+  vm.cardDetails = {};
   vm.selected = {};
+  vm.pay = pay;
+  vm.payWithSavedCard = payWithSavedCard;
   vm.isProcessing = false;
-  vm.onSubmit = onSubmit;
+  vm.isProcessingSavedCard = false;
   vm.currencySymbol = '£';
   vm.amount = 3.1415;
 
@@ -32,14 +35,28 @@ function DemoController($timeout) {
     }
   ];
 
-  function onSubmit() {
+  function pay() {
     vm.isProcessing = true;
-    $timeout(showSubmitAlert, 2000);
+    $timeout(showPayAlert, 2000);
   }
 
-  function showSubmitAlert() {
-    alert('onSubmit called with reference ' + vm.selected.reference
-      + ' and security code ' + vm.selected.securityCode + '.');
+  function showPayAlert() {
+    alert('pay called with card details:\n'
+      + vm.cardDetails.name + '\n'
+      + vm.cardDetails.number + '\n'
+      + vm.cardDetails.expiry + '\n'
+      + vm.cardDetails.securityCode + '\n');
     vm.isProcessing = false;
+  }
+
+  function payWithSavedCard() {
+    vm.isProcessingSavedCard = true;
+    $timeout(showPayWithSavedCardAlert, 2000);
+  }
+
+  function showPayWithSavedCardAlert() {
+    alert('payWithSavedCard called with reference ' + vm.selected.reference
+      + ' and security code ' + vm.selected.securityCode + '.');
+    vm.isProcessingSavedCard = false;
   }
 }

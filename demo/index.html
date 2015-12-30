@@ -21,44 +21,36 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-md-8">
-          <h4><code>tw-saved-cards</code> in action</h4>
+          <h4 class="m-b-lg"><code>tw-new-card-form</code> in action</h4>
+          <tw-new-card-form
+            card-details="vm.cardDetails"
+            currency-symbol="vm.currencySymbol"
+            amount="vm.amount"
+            on-submit="vm.pay()"
+            is-processing="vm.isProcessing">
+          </tw-new-card-form>
+        </div>
+        <div class="col-md-4">
+          <h4 class="m-b-lg"><code>vm.cardDetails</code></h4>
+          <pre>{{ vm.cardDetails | json }}</pre>
+          <h4><code>vm.isProcessing</code></h4>
+          <pre>{{ vm.isProcessing | json}}</pre>
+        </div>
+      </div>
+      <div class="row m-t-lg">
+        <div class="col-md-8">
+          <h4 class="m-b-lg"><code>tw-saved-cards</code> in action</h4>
           <tw-saved-cards
             cards="vm.cards"
             selected="vm.selected"
             currency-symbol="vm.currencySymbol"
             amount="vm.amount"
-            on-submit="vm.onSubmit()"
-            is-processing="vm.isProcessing">
+            on-submit="vm.payWithSavedCard()"
+            is-processing="vm.isProcessingSavedCard">
           </tw-saved-cards>
-          <h4 class="m-t-lg">Usage of <code>tw-saved-cards</code></h4>
-          <pre>&lt;tw-saved-cards
-  cards="vm.cards"
-  selected="vm.selected"
-  currency-symbol="vm.currencySymbol"
-  amount="vm.amount"
-  on-submit="vm.onSubmit()"
-  is-processing="vm.isProcessing"&gt;
-&lt;/tw-saved-cards&gt;</pre>
-          <p>
-            where <code>vm.cards</code>
-            is an array of cards specific to the TransferWise API,
-            <code>vm.selected</code> is an object
-            with <code>reference</code> and <code>securityCode</code>
-            of the selected card,
-            <code>vm.currencySymbol</code> and <code>vm.amount</code>
-            are self-explanatory,
-            <code>vm.onSubmit</code> is the
-            function from parent scope to call upon clicking the pay button and
-            <code>vm.isProcessing</code> is a boolean passed from parent scope
-            to change the pay button state to disabled.
-          </p>
-          <p>
-            Usage of non-TransferWise-API-specific <code>tw-saved-card</code>
-            is possible as well.
-          </p>
         </div>
         <div class="col-md-4">
-          <h4>
+          <h4 class="m-b-lg">
             <code>vm.selected</code>
             <span ng-if="vm.selected.securityCode"
                   class="text-success">(form valid)</span>
@@ -66,8 +58,8 @@
                   class="text-warning">(form not valid)</span>
           </h4>
           <pre>{{ vm.selected | json }}</pre>
-          <h4><code>vm.isProcessing</code></h4>
-          <pre>{{ vm.isProcessing | json}}</pre>
+          <h4><code>vm.isProcessingSavedCard</code></h4>
+          <pre>{{ vm.isProcessingSavedCard | json}}</pre>
         </div>
       </div>
     </div>
@@ -78,6 +70,8 @@
 <script src="vendor/js/angular.min.js"></script>
 <script src="vendor/js/angular-payments.min.js"></script>
 <script src="vendor/js/angular-animate.min.js"></script>
+<script src="vendor/js/jquery.min.js"></script>
+<script src="vendor/js/styleguide-components.min.js"></script>
 <script src="../dist/payment-components.js"></script>
 <script src="app.js"></script>
 

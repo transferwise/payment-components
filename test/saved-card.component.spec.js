@@ -20,7 +20,8 @@ describe('SavedCardComponent', function() {
   }));
 
   beforeEach(function() {
-    initiateDirective();
+    var scope = DEFAULT_SCOPE;
+    initiateDirective(scope, TEMPLATE);
   });
 
   describe('scope vm.selected.reference', function() {
@@ -62,39 +63,6 @@ describe('SavedCardComponent', function() {
     });
   });
 
-  describe('security code icon', function() {
-    var container;
-    var input;
-
-    describe('container', function() {
-      beforeEach(function() {
-        selectCard();
-
-        container = findElement('.tw-saved-card__card-flip-container');
-        input = findElement('[name$="savedCardSecurityCode"]');
-      });
-
-      it('should not have "show-back" class if input is not focused', function() {
-        expect(container.hasClass('show-back')).toBe(false);
-      });
-
-      it('should have "show-back" class if input is focused', function() {
-        input.triggerHandler('focus');
-
-        expect(container.hasClass('show-back')).toBe(true);
-      });
-    });
-
-    describe('front', function() {
-
-      it('should have brand class', function() {
-        var front = findElement('.tw-saved-card__card-front');
-
-        expect(front.hasClass('payment-card-icon-visa')).toBe(true);
-      });
-    });
-  });
-
   describe('card brand and type', function() {
 
     it('should exist in lowercase in HTML', function() {
@@ -131,7 +99,7 @@ describe('SavedCardComponent', function() {
     });
   });
 
-  describe('security code input', function() {
+  describe('security code', function() {
 
     describe('label', function() {
 
@@ -143,45 +111,14 @@ describe('SavedCardComponent', function() {
       });
 
       it('should have "CVC" if brand is not visa', function() {
-        initiateDirective(CARD_MASTERCARD);
+        var scope = DEFAULT_SCOPE;
+        scope.card = CARD_MASTERCARD;
+        initiateDirective(scope, TEMPLATE);
         selectCard();
         var label = findElement('.tw-saved-card__security-code-label');
 
         expect(label.text().trim().indexOf('CVC') > -1).toBe(true);
       });
-    });
-
-    describe('vm.isSecurityCodeInputFocused', function() {
-      var input;
-      beforeEach(function() {
-        selectCard();
-        input = findElement('[name$="savedCardSecurityCode"]');
-      });
-
-      it('should set vm.isSecurityCodeInputFocused to true if focused', function() {
-        input.triggerHandler('focus');
-
-        expect(isolatedScope.vm.isSecurityCodeFocused).toBe(true);
-      });
-
-      it('should set vm.isSecurityCodeInputFocused to false if blurred', function() {
-        input.triggerHandler('focus');
-        input.triggerHandler('blur');
-
-        expect(isolatedScope.vm.isSecurityCodeFocused).toBe(false);
-      });
-    });
-  });
-
-  describe('pay button', function() {
-
-    it('should have symbol and amount', function() {
-      selectCard();
-
-      var button = findElement('[name$="savedCardPaymentForm"] button');
-
-      expect(button.text()
-        .indexOf(CURRENCY_SYMBOL + AMOUNT) > -1).toBe(true);
     });
   });
 
@@ -192,7 +129,7 @@ describe('SavedCardComponent', function() {
       selectCard();
 
       var input = findElement('[name$="savedCardSecurityCode"]');
-      angular.element(input).val(737).triggerHandler(input);
+      angular.element(input).val(737).triggerHandler('input');
       $scope.$digest();
 
       var button = findElement('[name$="savedCardPaymentForm"] button');
@@ -202,40 +139,12 @@ describe('SavedCardComponent', function() {
     });
   });
 
-  function getCompiledElement() {
-    var elementAsString = '<tw-saved-card ' +
-      'brand="card.brand" ' +
-      'type="card.type" ' +
-      'number="card.number" ' +
-      'reference="card.reference" ' +
-      'selected="selected" ' +
-      'currency-symbol="currencySymbol" ' +
-      'amount="amount" ' +
-      'on-submit="onSubmit()">' +
-    '</tw-saved-card>';
-    var element = angular.element(elementAsString);
-    var compiledElement = $compile(element)($scope);
-    $scope.$digest();
-    return compiledElement;
-  }
-
   function findElement(query) {
     return angular.element(directiveElem[0].querySelector(query));
   }
 
   function selectCard() {
     directiveElem.triggerHandler('click');
-  }
-
-  function initiateDirective(card) {
-    card = card || DEFAULT_CARD;
-    $scope.card = card;
-    $scope.currencySymbol = CURRENCY_SYMBOL;
-    $scope.amount = AMOUNT;
-    $scope.selected = DEFAULT_SELECTED;
-    $scope.onSubmit = jasmine.createSpy('onSubmit');
-    directiveElem = getCompiledElement();
-    isolatedScope = directiveElem.isolateScope();
   }
 
   var DEFAULT_SELECTED = {
@@ -256,4 +165,32 @@ describe('SavedCardComponent', function() {
   var DEFAULT_CARD = CARD_VISA;
   var AMOUNT = 100;
   var CURRENCY_SYMBOL = '€';
+
+  var DEFAULT_SCOPE = {
+    card: DEFAULT_CARD,
+    currencySymbol: CURRENCY_SYMBOL,
+    amount: AMOUNT,
+    selected: DEFAULT_SELECTED,
+    obSubmit: jasmine.createSpy('onSubmit')
+  };
+  
+  var TEMPLATE = '<tw-saved-card ' +
+    'brand="card.brand" ' +
+    'type="card.type" ' +
+    'number="card.number" ' +
+    'reference="card.reference" ' +
+    'selected="selected" ' +
+    'currency-symbol="currencySymbol" ' +
+    'amount="amount" ' +
+    'on-submit="onSubmit()">' +
+  '</tw-saved-card>';
+
+  function initiateDirective(scope, template) {
+    angular.extend($scope, scope);
+    var element = angular.element(template);
+    var compiledElement = $compile(element)($scope);
+    $scope.$digest();
+    directiveElem = compiledElement;
+    isolatedScope = directiveElem.isolateScope();
+  }
 });

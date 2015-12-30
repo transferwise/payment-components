@@ -1,0 +1,9 @@
+<button type="submit" class="btn btn-success btn-block m-t-md m-b-md"
+  ng-disabled="vm.isDisabled">
+  <span ng-if="!vm.isDisabled">
+    Pay {{ ::vm.currencySymbol }}{{ ::vm.amount | number:2 }}
+  </span>
+  <span ng-if="vm.isDisabled">
+    Processing the payment...
+  </span>
+</button>

@@ -1,0 +1,7 @@
+<input type="text" name="securityCode" required
+  class="form-control" autocomplete="off"
+  placeholder="3 digits on the back"
+  maxlength="3" ng-maxlength="3"
+  ng-focus="vm.focused = true"
+  ng-blur="vm.focused = false"
+  payments-validate="cvc" payments-format="cvc" />

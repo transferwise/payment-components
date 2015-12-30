@@ -20,7 +20,8 @@ describe('SavedCardsComponent', function() {
   }));
 
   beforeEach(function() {
-    initiateDirective();
+    var scope = DEFAULT_SCOPE;
+    initiateDirective(scope, TEMPLATE);
   });
 
   it('should show all cards in cards', function() {
@@ -106,14 +107,7 @@ describe('SavedCardsComponent', function() {
   });
 
   function getCompiledElement() {
-    var elementAsString = '<tw-saved-cards ' +
-      'cards="savedCards" ' +
-      'selected="selectedSavedCard" ' +
-      'currency-symbol="currencySymbol" ' +
-      'amount="amount" ' +
-      'on-submit="onSubmit()" ' +
-      'is-processing="isProcessing">' +
-    '</tw-saved-cards>';
+    
     var element = angular.element(elementAsString);
     var compiledElement = $compile(element)($scope);
     $scope.$digest();
@@ -122,17 +116,6 @@ describe('SavedCardsComponent', function() {
 
   function findElements(query) {
     return angular.element(directiveElem[0].querySelectorAll(query));
-  }
-
-  function initiateDirective() {
-    $scope.savedCards = SAVED_CARDS;
-    $scope.selectedSavedCard = SELECTED_SAVED_CARD;
-    $scope.currencySymbol = CURRENCY_SYMBOL;
-    $scope.amount = AMOUNT;
-    $scope.onSubmit = jasmine.createSpy('onSubmit');
-    $scope.isProcessing = IS_PROCESSING;
-    directiveElem = getCompiledElement();
-    isolatedScope = directiveElem.isolateScope();
   }
 
   var CARD_VISA = {
@@ -156,4 +139,31 @@ describe('SavedCardsComponent', function() {
   var VISA_BRAND = 'visa';
   var MASTERCARD_BRAND = 'mastercard';
   var MAESTRO_BRAND = 'maestro';
+
+  var DEFAULT_SCOPE = {
+    savedCards: SAVED_CARDS,
+    selectedSavedCard: SELECTED_SAVED_CARD,
+    currencySymbol: CURRENCY_SYMBOL,
+    amount: AMOUNT,
+    onSubmit: jasmine.createSpy('onSubmit'),
+    isProcessing: IS_PROCESSING
+  };
+
+  var TEMPLATE = '<tw-saved-cards ' +
+    'cards="savedCards" ' +
+    'selected="selectedSavedCard" ' +
+    'currency-symbol="currencySymbol" ' +
+    'amount="amount" ' +
+    'on-submit="onSubmit()" ' +
+    'is-processing="isProcessing">' +
+  '</tw-saved-cards>';
+
+  function initiateDirective(scope, template) {
+    angular.extend($scope, scope);
+    var element = angular.element(template);
+    var compiledElement = $compile(element)($scope);
+    $scope.$digest();
+    directiveElem = compiledElement;
+    isolatedScope = directiveElem.isolateScope();
+  }
 });

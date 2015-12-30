@@ -21,7 +21,7 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-md-8">
-          <h4 class="m-b-lg"><code>tw-new-card-form</code> in action</h4>
+          <h4 class="m-t-lg m-b-lg"><code>tw-new-card-form</code> in action</h4>
           <tw-new-card-form
             card-details="vm.cardDetails"
             currency-symbol="vm.currencySymbol"
@@ -31,15 +31,15 @@
           </tw-new-card-form>
         </div>
         <div class="col-md-4">
-          <h4 class="m-b-lg"><code>vm.cardDetails</code></h4>
+          <h4 class="m-t-lg m-b-lg"><code>vm.cardDetails</code></h4>
           <pre>{{ vm.cardDetails | json }}</pre>
-          <h4><code>vm.isProcessing</code></h4>
+          <h4 class="m-t-lg m-b-lg"><code>vm.isProcessing</code></h4>
           <pre>{{ vm.isProcessing | json}}</pre>
         </div>
       </div>
-      <div class="row m-t-lg">
+      <div class="row">
         <div class="col-md-8">
-          <h4 class="m-b-lg"><code>tw-saved-cards</code> in action</h4>
+          <h4 class="m-t-lg m-b-lg"><code>tw-saved-cards</code> in action</h4>
           <tw-saved-cards
             cards="vm.cards"
             selected="vm.selected"
@@ -50,7 +50,7 @@
           </tw-saved-cards>
         </div>
         <div class="col-md-4">
-          <h4 class="m-b-lg">
+          <h4 class="m-t-lg m-b-lg">
             <code>vm.selected</code>
             <span ng-if="vm.selected.securityCode"
                   class="text-success">(form valid)</span>
@@ -58,7 +58,7 @@
                   class="text-warning">(form not valid)</span>
           </h4>
           <pre>{{ vm.selected | json }}</pre>
-          <h4><code>vm.isProcessingSavedCard</code></h4>
+          <h4 class="m-t-lg m-b-lg"><code>vm.isProcessingSavedCard</code></h4>
           <pre>{{ vm.isProcessingSavedCard | json}}</pre>
         </div>
       </div>

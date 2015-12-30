@@ -124,16 +124,14 @@ describe('SavedCardComponent', function() {
 
   describe('onSubmit method', function() {
 
-    // TODO Fix this test
-    xit('should be called from parent scope when form is submitted', function() {
+    it('should be called from parent scope when form is submitted', function() {
       selectCard();
 
-      var input = findElement('[name$="savedCardSecurityCode"]');
-      angular.element(input).val(737).triggerHandler('input');
-      $scope.$digest();
+      var input = findElement('[name$="securityCode"]');
+      input.val(737).triggerHandler('input');
 
-      var button = findElement('[name$="savedCardPaymentForm"] button');
-      button.triggerHandler('click');
+      var form = findElement('[name$="savedCardPaymentForm"]');
+      form.triggerHandler('submit');
 
       expect($scope.onSubmit).toHaveBeenCalled();
     });
@@ -171,7 +169,7 @@ describe('SavedCardComponent', function() {
     currencySymbol: CURRENCY_SYMBOL,
     amount: AMOUNT,
     selected: DEFAULT_SELECTED,
-    obSubmit: jasmine.createSpy('onSubmit')
+    onSubmit: jasmine.createSpy('onSubmit')
   };
   
   var TEMPLATE = '<tw-saved-card ' +

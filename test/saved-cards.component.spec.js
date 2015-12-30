@@ -106,14 +106,6 @@ describe('SavedCardsComponent', function() {
     });
   });
 
-  function getCompiledElement() {
-    
-    var element = angular.element(elementAsString);
-    var compiledElement = $compile(element)($scope);
-    $scope.$digest();
-    return compiledElement;
-  }
-
   function findElements(query) {
     return angular.element(directiveElem[0].querySelectorAll(query));
   }

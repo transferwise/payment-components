@@ -1,6 +1,8 @@
 # Payment components
 Angular 1 components (directive-controller-view-styles bundles as of now) for payment step in TransferWise products.
 
+See the demo [here](https://rawgit.com/transferwise/payment-components/master/demo/index.html).
+
 ## Getting the code
 
     bower install --save https://github.com/transferwise/payment-components.git

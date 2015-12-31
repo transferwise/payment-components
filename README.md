@@ -26,6 +26,11 @@ Add the script dependency
 <script src="path/to/payment-components.js"></script>
 ```
 
+Add the stylesheet dependency
+```html
+<link href="path/to/payment-components.js" rel="stylesheet">
+```
+
 Inject the module into the required module
 ```js
 angular.module('myApp',['tw.paymentComponents']);

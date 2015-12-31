@@ -31,7 +31,13 @@
           </tw-new-card-form>
         </div>
         <div class="col-md-4">
-          <h4 class="m-t-lg m-b-lg"><code>vm.cardDetails</code></h4>
+          <h4 class="m-t-lg m-b-lg">
+            <code>vm.cardDetails</code>
+            <span ng-if="vm.isNewCardFormValid()"
+              class="text-success">(form valid)</span>
+            <span ng-if="!vm.isNewCardFormValid()"
+              class="text-warning">(form invalid)</span>
+          </h4>
           <pre>{{ vm.cardDetails | json }}</pre>
           <h4 class="m-t-lg m-b-lg"><code>vm.isProcessing</code></h4>
           <pre>{{ vm.isProcessing | json}}</pre>
@@ -52,10 +58,10 @@
         <div class="col-md-4">
           <h4 class="m-t-lg m-b-lg">
             <code>vm.selected</code>
-            <span ng-if="vm.selected.securityCode"
+            <span ng-if="vm.isSavedCardsValid()"
                   class="text-success">(form valid)</span>
-            <span ng-if="!vm.selected.securityCode"
-                  class="text-warning">(form not valid)</span>
+            <span ng-if="!vm.isSavedCardsValid()"
+                  class="text-warning">(form invalid)</span>
           </h4>
           <pre>{{ vm.selected | json }}</pre>
           <h4 class="m-t-lg m-b-lg"><code>vm.isProcessingSavedCard</code></h4>

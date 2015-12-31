@@ -13,6 +13,8 @@ function DemoController($timeout) {
   vm.isProcessingSavedCard = false;
   vm.currencySymbol = '£';
   vm.amount = 3.1415;
+  vm.isNewCardFormValid = isNewCardFormValid;
+  vm.isSavedCardsValid = isSavedCardsValid;
 
   vm.cards = [
     {
@@ -58,5 +60,16 @@ function DemoController($timeout) {
     alert('payWithSavedCard called with reference ' + vm.selected.reference
       + ' and security code ' + vm.selected.securityCode + '.');
     vm.isProcessingSavedCard = false;
+  }
+
+  function isNewCardFormValid() {
+    return vm.cardDetails.name &&
+      vm.cardDetails.number &&
+      vm.cardDetails.expiry &&
+      vm.cardDetails.securityCode;
+  }
+
+  function isSavedCardsValid() {
+    return !!vm.selected.securityCode;
   }
 }

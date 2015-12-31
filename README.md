@@ -17,11 +17,7 @@ or
 5. `jquery`
 6. `styleguide-components`
 
-## Components
-
-### `tw-saved-cards`
-
-#### Usage
+## Usage
 
 Add the script dependency
 ```html
@@ -33,7 +29,32 @@ Inject the module into the required module
 angular.module('myApp',['tw.paymentComponents']);
 ```
 
-Add the directive code to HTML
+Add the directive code to HTML (specified under components)
+
+## Components
+
+### `tw-new-card-form`
+
+Directive:  
+```html
+<tw-new-card-form
+  card-details="vm.cardDetails"
+  currency-symbol="vm.currencySymbol"
+  amount="vm.amount"
+  on-submit="vm.onSubmit()"
+  is-processing="vm.isProcessing">
+</tw-new-card-form>
+```
+where  
+`vm.cardDetails` – two-way bound object with `name`, `number`, `expiry` and `securityCode`  
+`vm.currencySymbol` – currency symbol (e.g. `'£'`) to be displayed on the pay button  
+`vm.amount` – amount (e.g. `3.14`) to be displayed on the pay button  
+`vm.onSubmit` – method to be called from parent scope after submitting the form  
+`vm.isProcessing` – boolean to be passed from parent scope to disable the pay button
+
+### `tw-saved-cards`
+
+Directive:  
 ```html
 <tw-saved-cards
   cards="vm.cards"

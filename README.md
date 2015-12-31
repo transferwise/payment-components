@@ -37,6 +37,8 @@ Add the directive code to HTML (specified under components)
 
 ### `tw-new-card-form`
 
+<a href="http://i.imgur.com/6wJldbl.png"><img src="http://i.imgur.com/6wJldbl.png" width="480px"></a>
+
 Directive:  
 ```html
 <tw-new-card-form
@@ -55,6 +57,8 @@ where
 `vm.isProcessing` – boolean to be passed from parent scope to disable the pay button
 
 ### `tw-saved-cards`
+
+<a href="http://i.imgur.com/5gz1vPq.png"><img src="http://i.imgur.com/5gz1vPq.png" width="480px"></a>
 
 Directive:  
 ```html

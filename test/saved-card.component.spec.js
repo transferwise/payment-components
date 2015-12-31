@@ -120,6 +120,18 @@ describe('SavedCardComponent', function() {
         expect(label.text().trim().indexOf('CVC') > -1).toBe(true);
       });
     });
+
+    describe('focus', function() {
+
+      it('should be set when card is selected', inject(function($timeout) {
+        selectCard();
+        var input = directiveElem.find('input');
+        spyOn(input[0], 'focus');
+        $timeout.flush();
+
+        expect(input[0].focus).toHaveBeenCalled();
+      }));
+    });
   });
 
   describe('onSubmit method', function() {

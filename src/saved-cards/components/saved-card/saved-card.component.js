@@ -26,7 +26,7 @@ module.exports = function SavedCardComponent() {
   return directive;
 };
 
-function SavedCardController() {
+function SavedCardController($element, $timeout) {
   var vm = this;
 
   vm.isSelected = isSelected;
@@ -35,6 +35,8 @@ function SavedCardController() {
   function selectCard() {
     if (!isSelected()) {
       vm.selected = {reference: vm.reference};
+
+      $timeout(focusSecurityCodeInput, 300);
     }
   }
 
@@ -43,5 +45,9 @@ function SavedCardController() {
       return false;
     }
     return vm.selected.reference === vm.reference;
+  }
+
+  function focusSecurityCodeInput() {
+    $element.find('input')[0].focus();
   }
 }

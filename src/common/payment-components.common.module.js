@@ -9,6 +9,7 @@ var PayButtonComponent =
   require('./components/pay-button/pay-button.component');
 
 var common = angular.module('tw.paymentComponents.common', [
+  'ngAnimate',
   'angularPayments',
   'tw.styleguide-components'
 ]);

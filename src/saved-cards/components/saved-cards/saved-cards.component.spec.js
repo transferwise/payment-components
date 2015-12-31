@@ -1,6 +1,6 @@
 'use strict';
 
-require('../src/payment-components.module');
+require('../../../payment-components.module');
 
 describe('SavedCardsComponent', function() {
   var $compile,

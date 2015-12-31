@@ -22,11 +22,11 @@ module.exports = function(config) {
       'node_modules/angular-payments/lib/angular-payments.js',
       'node_modules/jquery/dist/jquery.min.js',
       'node_modules/tw-styleguide-components/dist/js/styleguide-components.js',
-      'test/*.spec.js'
+      'src/**/*.spec.js'
     ],
 
     preprocessors: {
-      'test/*.spec.js': [ 'browserify' ]
+      'src/**/*.spec.js': [ 'browserify' ]
     },
 
     reporters: ['mocha'],

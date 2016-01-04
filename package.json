@@ -10,6 +10,7 @@
     "angular-animate": "~1.3.17",
     "angular-payments": "honestdollar/angular-payments#434a783dadacc9fd520219511506d9a6546eb542",
     "bootstrap": "https://github.com/transferwise/bootstrap/tarball/v3.3.22",
+    "jquery": "^2.1.4",
     "styleguide-components": "https://github.com/transferwise/styleguide-components.git"
   },
   "scripts": {

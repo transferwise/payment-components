@@ -5,6 +5,7 @@
     <label for="name" class="control-label">Cardholder name</label>
     <input type="text" name="name" required class="form-control"
       placeholder="Your name as it appears on the card" autocomplete="off"
+      tw-validation
       ng-model="vm.cardDetails.name" />
   </div>
 
@@ -13,6 +14,7 @@
     <input type="text" name="number" required class="form-control"
       placeholder="The long number across the front" autocomplete="off"
       ng-model="vm.cardDetails.number"
+      tw-validation
       payments-validate="card"
       payments-type-model="vm.brand"
       payments-format="card" />
@@ -34,6 +36,7 @@
         <input type="text" name="expiry" required class="form-control"
           placeholder="MM / YY" autocomplete="off"
           ng-model="vm.cardDetails.expiry"
+          tw-validation
           payments-validate="expiry"
           payments-format="expiry">
       </div>

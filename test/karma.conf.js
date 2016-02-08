@@ -21,7 +21,7 @@ module.exports = function(config) {
       'node_modules/angular-animate/angular-animate.js',
       'node_modules/angular-payments/lib/angular-payments.js',
       'node_modules/jquery/dist/jquery.min.js',
-      'node_modules/tw-styleguide-components/dist/js/styleguide-components.js',
+      'bower_components/tw-styleguide-components/dist/js/styleguide-components.js',
       'src/**/*.spec.js'
     ],
 

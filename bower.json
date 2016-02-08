@@ -1,0 +1,6 @@
+{
+  "name": "payment-components",
+  "dependencies": {
+    "tw-styleguide-components": "https://github.com/transferwise/styleguide-components.git"
+  }
+}
